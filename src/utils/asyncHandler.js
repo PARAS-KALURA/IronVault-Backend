@@ -3,7 +3,10 @@
 // Server protection.
 // 👉 It hands the error to Express.
 
-const asyncHandler = (fn) => (req, res, next) => {
-  Promise.resolve(fn(req, res, next)).catch(next);
+const asyncHandler = (e) => (req, res, next) => {
+   Promise.resolve(e(req, res, next)).catch(next); // If it throws an error, catch it and pass it to next.”
 };
+
 module.exports = asyncHandler;
+
+
